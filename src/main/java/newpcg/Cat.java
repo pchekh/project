@@ -1,32 +1,54 @@
 package newpcg;
 
+import java.util.Objects;
+
 public class Cat {
 
-    public int weight; // вес кота
-    public int height; // рост кота
-    //public String type; // тип животного
-    public String color; //окрас кота
+        String name;
+        int weight;
+        int height;
+        String type;
+        String color;
 
-    //кот ест
-    public void eat(){
-        System.out.print("Eating...\n");
+        public Cat(String name, int weight, int height, String type, String color)
+        {
+            this.name = name;
+            this.weight = weight;
+            this.height = height;
+            this.type = type;
+            this.color = color;
+
+        }
+
+
+    public String move(String words){
+
+            String phrase = words + " Run...";
+            return phrase;
     }
 
-    //кот спит
-    public void sleep(){
-        System.out.print("Sleeping zz-z-z-z...\n");
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cat cat = (Cat) o;
+        return Objects.equals(color, cat.color);
     }
 
-    //кот говорит
-    public String speak(String words){
-        String phrase = words + "...mauu...\n";
-        return phrase;
+    @Override
+    public int hashCode() {
+        return Objects.hash(color);
     }
 
-    //тип животного
-    public String typeAnimal(String words){
-        String phrase = words + "...mammal...\n";
-        return phrase;
+    @Override
+    public String toString() {
+        return "Cat{" +
+                "name='" + name + '\'' +
+                ", weight=" + weight +
+                ", height=" + height +
+                ", type='" + type + '\'' +
+                ", color='" + color + '\'' +
+                '}';
     }
+}
 
-    }

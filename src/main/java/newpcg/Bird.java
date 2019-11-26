@@ -1,32 +1,52 @@
 package newpcg;
 
+import java.util.Objects;
+
 public class Bird {
 
-    public int weight; // вес птицы
-    public int height; // рост птицы
-    public String type; // тип животного
-    public String color; //окрас птицы
+    String name;
+    int weight;
+    int height;
+    String type;
+    String color;
 
-    //птица ест
-    public void eat(){
-        System.out.print("Kluv'...\n");
+    public Bird(String name, int weight, int height, String type, String color)
+    {
+        this.name = name;
+        this.weight = weight;
+        this.height = height;
+        this.type = type;
+        this.color = color;
+
     }
 
-    //птица спит
-    public void sleep(){
-        System.out.print("Sleeping mm-m-m-m...\n");
-    }
+    public String move(String words){
 
-    //птица говорит
-    public String speak(String words){
-        String phrase = words + "...ChikChirik...\n";
+        String phrase = words + " Fly...";
         return phrase;
     }
 
-    //тип животного
-    public String typeAnimal(String words1) {
-        String phrase1 = words1 + "...test1...\n";
-        return phrase1;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Bird bird = (Bird) o;
+        return Objects.equals(color, bird.color);
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(color);
+    }
+
+    @Override
+    public String toString() {
+        return "Bird{" +
+                "name='" + name + '\'' +
+                ", weight=" + weight +
+                ", height=" + height +
+                ", type='" + type + '\'' +
+                ", color='" + color + '\'' +
+                '}';
+    }
 }

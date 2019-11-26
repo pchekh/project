@@ -1,32 +1,52 @@
 package newpcg;
 
+import java.util.Objects;
+
 public class Dog {
 
-    public int weight; // вес собаки
-    public int height; // рост собаки
-    public String type; // тип животного
-    public String color; //окрас собаки
+    String name;
+    int weight;
+    int height;
+    String type;
+    String color;
 
-    //собака ест
-    public void eat(){
-        System.out.print("Kus'...\n");
+    public Dog(String name, int weight, int height, String type, String color)
+    {
+        this.name = name;
+        this.weight = weight;
+        this.height = height;
+        this.type = type;
+        this.color = color;
+
     }
 
-    //собака спит
-    public void sleep(){
-        System.out.print("Sleeping hr-r-r-r...\n");
-    }
+    public String move(String words){
 
-    //собака говорит
-    public String speak(String words){
-        String phrase = words + "...gavgav...\n";
+        String phrase = words + " Fun...";
         return phrase;
     }
 
-    //тип животного
-    public String typeAnimal(String words1) {
-        String phrase1 = words1 + "...test...\n";
-        return phrase1;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Dog dog = (Dog) o;
+        return Objects.equals(color, dog.color);
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(color);
+    }
+
+    @Override
+    public String toString() {
+        return "Dog{" +
+                "name='" + name + '\'' +
+                ", weight=" + weight +
+                ", height=" + height +
+                ", type='" + type + '\'' +
+                ", color='" + color + '\'' +
+                '}';
+    }
 }
